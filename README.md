@@ -9,4 +9,6 @@ We are aiming to create basically Star Craft rip-off
 
 
 #Authors
-- [@JanStork](https://github.com/JanStork)
+-[Jan Štork](https://github.com/JanStork)
+-[Jan Chaloupka](https://github.com/ChaloupkaJan)
+-[Vít Mareček](https://github.com/VitMarecek)
