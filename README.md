@@ -7,7 +7,7 @@ We are aiming to create basically Star Craft rip-off
 
 
 
-#Authors
+# Authors
 
 - [Jan "camillia" Štork](https://github.com/JanStork)
 - [Jan "hajacha" Chaloupka](https://github.com/ChaloupkaJan)
