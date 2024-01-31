@@ -856,7 +856,7 @@ GameObject:
   - component: {fileID: 1603616169}
   - component: {fileID: 1603616168}
   m_Layer: 0
-  m_Name: univerzalniObjektProScript
+  m_Name: universalObjForScript
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -993,7 +993,7 @@ GameObject:
   - component: {fileID: 2005689194}
   - component: {fileID: 2005689193}
   m_Layer: 0
-  m_Name: ilustrativniObrazek
+  m_Name: tempPic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
