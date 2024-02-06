@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Inhibitor
+  - Barracks
+  - Map
+  - UI
   layers:
   - Default
   - TransparentFX
@@ -11,7 +15,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - map
   - 
   - 
   - 
@@ -40,4 +44,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Map
+    uniqueID: 3829542361
+    locked: 0
+  - name: Entities
+    uniqueID: 3561596217
+    locked: 0
+  - name: Buildings
+    uniqueID: 3724198605
+    locked: 0
+  - name: buttons
+    uniqueID: 1484183281
     locked: 0
