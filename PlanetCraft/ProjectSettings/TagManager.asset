@@ -8,6 +8,10 @@ TagManager:
   - Barracks
   - Map
   - UI
+  - Mineral
+  - Worker
+  - WorkerButton
+  - MarineButton
   layers:
   - Default
   - TransparentFX
