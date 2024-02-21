@@ -2,64 +2,169 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Worker : MonoBehaviour
+/*public class Worker : MonoBehaviour
 {
-    public Transform mineralTarget; // Cíl pracovníka - objekt "mineral"
-    public Transform inhibitorTarget; // Druhý cíl pracovníka - objekt "Inhibitor"
-    private Transform currentTarget; // Aktuální cíl pracovníka
-    private bool reachedTarget; // Flag pro kontrolu, zda pracovník dosáhl cíle
     public float speed = 5f;
+    private Transform currentTarget;
+    private bool reachedTarget;
     void Start()
     {
-        // Nastavení poèáteèního cíle pracovníka
-        currentTarget = mineralTarget;
+        currentTarget = null;
         reachedTarget = false;
     }
     void Update()
     {
-        // Pokud pracovník dosáhl aktuálního cíle
-        if (reachedTarget)
+        if (reachedTarget || currentTarget == null)
         {
-            // Nastavíme další cíl pracovníka
-            SetNextTarget();
+            FindNearestTarget();
         }
         else
         {
-            // Pokud pracovník ještì nedosáhl cíle, pokraèuje ve smìru k nìmu
             MoveTowardsTarget();
         }
     }
     void MoveTowardsTarget()
     {
-        // Pohyb pracovníka smìrem k aktuálnímu cíli
-        transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, Time.deltaTime * speed);
-        // Pokud pracovník dosáhne cíle
-        if (Vector2.Distance(transform.position, currentTarget.position) < 0.1f)
+        if (currentTarget != null)
         {
-            reachedTarget = true;
+            transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, Time.deltaTime * speed);
+            if (Vector2.Distance(transform.position, currentTarget.position) < 0.1f)
+            {
+                reachedTarget = true;
+            }
         }
     }
-    void SetNextTarget()
+    void FindNearestTarget()
     {
-        // Pokud aktuální cíl je objekt "mineral", nastavíme další cíl na objekt "Inhibitor" a naopak
-        if (currentTarget == mineralTarget)
+        GameObject[] minerals = GameObject.FindGameObjectsWithTag("Mineral");
+        GameObject[] inhibitors = GameObject.FindGameObjectsWithTag("Inhibitor");
+        float nearestMineralDistance = Mathf.Infinity;
+        float nearestInhibitorDistance = Mathf.Infinity;
+        Transform nearestMineral = null;
+        Transform nearestInhibitor = null;
+        foreach (GameObject mineral in minerals)
         {
-            currentTarget = inhibitorTarget;
+            float distance = Vector2.Distance(transform.position, mineral.transform.position);
+            if (distance < nearestMineralDistance)
+            {
+                nearestMineralDistance = distance;
+                nearestMineral = mineral.transform;
+            }
         }
-        else
+        foreach (GameObject inhibitor in inhibitors)
         {
-            currentTarget = mineralTarget;
+            float distance = Vector2.Distance(transform.position, inhibitor.transform.position);
+            if (distance < nearestInhibitorDistance)
+            {
+                nearestInhibitorDistance = distance;
+                nearestInhibitor = inhibitor.transform;
+            }
         }
-        reachedTarget = false;
+        if (nearestMineral != null && nearestInhibitor != null)
+        {
+            if (nearestMineralDistance <= nearestInhibitorDistance)
+            {
+                currentTarget = nearestMineral;
+            }
+            else
+            {
+                currentTarget = nearestInhibitor;
+            }
+
+            reachedTarget = false;
+        }
+        else if (nearestMineral != null)
+        {
+            currentTarget = nearestMineral;
+            reachedTarget = false;
+        }
+        else if (nearestInhibitor != null)
+        {
+            currentTarget = nearestInhibitor;
+            reachedTarget = false;
+        }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Pokud pracovník se dotkne objektu s tagem "Mineral" nebo "Inhibitor"
         if (other.CompareTag("Mineral") || other.CompareTag("Inhibitor"))
         {
-            // Reagovat zde na dotyk s objektem
-            // Napøíklad zastavit pracovníka nebo provést jinou akci
-            // Tato èást kódu mùže být upravena podle potøeby
+            Debug.Log("Worker se dotkl objektu: " + other.tag);
+        }
+    }
+}*/
+public class Worker : MonoBehaviour
+{
+    public float speed = 5f;
+    private Transform currentTarget;
+    private bool reachedTarget;
+    void Start()
+    {
+        currentTarget = null;
+        reachedTarget = false;
+    }
+    void Update()
+    {
+        if (reachedTarget || currentTarget == null)
+        {
+            FindNearestTarget();
+        }
+        else
+        {
+            MoveTowardsTarget();
+        }
+    }
+    void MoveTowardsTarget()
+    {
+        if (currentTarget != null)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, Time.deltaTime * speed);
+            if (Vector2.Distance(transform.position, currentTarget.position) < 0.1f)
+            {
+                reachedTarget = true;
+            }
+        }
+    }
+    void FindNearestTarget()
+    {
+        GameObject[] minerals = GameObject.FindGameObjectsWithTag("Mineral");
+        GameObject[] inhibitors = GameObject.FindGameObjectsWithTag("Inhibitor");
+        float nearestMineralDistance = Mathf.Infinity;
+        float nearestInhibitorDistance = Mathf.Infinity;
+        Transform nearestMineral = null;
+        Transform nearestInhibitor = null;
+        foreach (GameObject mineral in minerals)
+        {
+            float distance = Vector2.Distance(transform.position, mineral.transform.position);
+            if (distance < nearestMineralDistance)
+            {
+                nearestMineralDistance = distance;
+                nearestMineral = mineral.transform;
+            }
+        }
+        foreach (GameObject inhibitor in inhibitors)
+        {
+            float distance = Vector2.Distance(transform.position, inhibitor.transform.position);
+            if (distance < nearestInhibitorDistance)
+            {
+                nearestInhibitorDistance = distance;
+                nearestInhibitor = inhibitor.transform;
+            }
+        }
+        if (nearestInhibitor != null)
+        {
+            currentTarget = nearestInhibitor;
+            reachedTarget = false;
+        }
+        else if (nearestMineral != null)
+        {
+            currentTarget = nearestMineral;
+            reachedTarget = false;
+        }
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Mineral") || other.CompareTag("Inhibitor"))
+        {
             Debug.Log("Worker se dotkl objektu: " + other.tag);
         }
     }

@@ -20,11 +20,11 @@ TagManager:
   - Water
   - UI
   - map
-  - 
-  - 
-  - 
-  - 
-  - 
+  - blocks
+  - buildings
+  - units
+  - buttons
+  - camera
   - 
   - 
   - 
@@ -52,11 +52,11 @@ TagManager:
   - name: Map
     uniqueID: 3829542361
     locked: 0
-  - name: Entities
-    uniqueID: 3561596217
-    locked: 0
   - name: Buildings
     uniqueID: 3724198605
+    locked: 0
+  - name: entities
+    uniqueID: 2948344807
     locked: 0
   - name: buttons
     uniqueID: 1484183281

@@ -66,6 +66,7 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public GameObject workerPrefab;
     public GameObject workerIcon;
     public GameObject marineIcon;
     private void Start()
@@ -85,18 +86,20 @@ public class Player : MonoBehaviour
                 {
                     workerIcon.SetActive(true);
                 }
-                else if (hit.collider.CompareTag("Baracks"))
+                /*else if (hit.collider.CompareTag("Baracks"))
                 {
                     marineIcon.SetActive(true);
-                }
+                }*/
                 else if (hit.collider.CompareTag("WorkerButton")) // Pokud klikneme na UI
                 {
                     // Zde mùžete zavolat metodu, která reaguje na kliknutí na tlaèítko
-                    Button buttonClicked = hit.collider.GetComponent<Button>();
+                    /*Button buttonClicked = hit.collider.GetComponent<Button>();
                     if (buttonClicked != null)
                     {
                         buttonClicked.onClick.Invoke();
-                    }
+                    }*/
+                    Vector3 newPosition = new Vector3(-16f, -10f, 0f);
+                    Instantiate(workerPrefab, newPosition, Quaternion.identity);
                 }
                 else
                 {
