@@ -66,7 +66,9 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public GameObject player1;
     public GameObject workerPrefab;
+    public GameObject marinePrefab;
     public GameObject workerIcon;
     public GameObject marineIcon;
     private void Start()
@@ -84,22 +86,25 @@ public class Player : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Inhibitor"))
                 {
+                    marineIcon.SetActive(false);
                     workerIcon.SetActive(true);
                 }
-                /*else if (hit.collider.CompareTag("Baracks"))
+                else if (hit.collider.CompareTag("WorkerButton"))
                 {
+                    Vector3 newPosition = new Vector3(-19f, -7f, 0f);
+                    GameObject newWorker = Instantiate(workerPrefab, newPosition, Quaternion.identity);
+                    newWorker.transform.parent = player1.transform;
+                }
+                else if (hit.collider.CompareTag("Barracks"))
+                {
+                    workerIcon.SetActive(false);
                     marineIcon.SetActive(true);
-                }*/
-                else if (hit.collider.CompareTag("WorkerButton")) // Pokud klikneme na UI
+                }
+                else if (hit.collider.CompareTag("MarineButton"))
                 {
-                    // Zde mùžete zavolat metodu, která reaguje na kliknutí na tlaèítko
-                    /*Button buttonClicked = hit.collider.GetComponent<Button>();
-                    if (buttonClicked != null)
-                    {
-                        buttonClicked.onClick.Invoke();
-                    }*/
-                    Vector3 newPosition = new Vector3(-16f, -10f, 0f);
-                    Instantiate(workerPrefab, newPosition, Quaternion.identity);
+                    Vector3 newPosition = new Vector3(-12.5f, -8f, 0f);
+                    GameObject newMarine = Instantiate(marinePrefab, newPosition, Quaternion.identity);
+                    newMarine.transform.parent = player1.transform;
                 }
                 else
                 {
