@@ -59,6 +59,7 @@ public class player : MonoBehaviour
         marineIcon?.SetActive(false);
     }
 }*/
+using Photon.Pun.Demo.PunBasics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -71,8 +72,11 @@ public class Player : MonoBehaviour
     public GameObject marinePrefab;
     public GameObject workerIcon;
     public GameObject marineIcon;
+    public Text mineralsText;
+    public static int Minerals;
     private void Start()
     {
+        Minerals = 0;
         workerIcon.SetActive(false);
         marineIcon.SetActive(false);
     }
@@ -91,9 +95,17 @@ public class Player : MonoBehaviour
                 }
                 else if (hit.collider.CompareTag("WorkerButton"))
                 {
-                    Vector3 newPosition = new Vector3(-19f, -7f, 0f);
-                    GameObject newWorker = Instantiate(workerPrefab, newPosition, Quaternion.identity);
-                    newWorker.transform.parent = player1.transform;
+                    if (Minerals > 25)
+                    {
+                        Minerals -= 25;
+                        Vector3 newPosition = new Vector3(-19f, -7f, 0f);
+                        GameObject newWorker = Instantiate(workerPrefab, newPosition, Quaternion.identity);
+                        newWorker.transform.parent = player1.transform;
+                    }
+                    else
+                    {
+                        Debug.Log("Není dostatek minerálù");
+                    }
                 }
                 else if (hit.collider.CompareTag("Barracks"))
                 {
@@ -102,9 +114,17 @@ public class Player : MonoBehaviour
                 }
                 else if (hit.collider.CompareTag("MarineButton"))
                 {
-                    Vector3 newPosition = new Vector3(-12.5f, -8f, 0f);
-                    GameObject newMarine = Instantiate(marinePrefab, newPosition, Quaternion.identity);
-                    newMarine.transform.parent = player1.transform;
+                    if (Minerals > 75) 
+                    {
+                        Minerals -= 75;
+                        Vector3 newPosition = new Vector3(-12.5f, -8f, 0f);
+                        GameObject newMarine = Instantiate(marinePrefab, newPosition, Quaternion.identity);
+                        newMarine.transform.parent = player1.transform;
+                    }
+                    else
+                    {
+                        Debug.Log("Není dostatek minerálù");
+                    }
                 }
                 else
                 {
@@ -116,6 +136,7 @@ public class Player : MonoBehaviour
                 DoSomethingElse();
             }
         }
+        mineralsText.text = "Minerals: " + Minerals;
     }
     void DoSomethingElse()
     {

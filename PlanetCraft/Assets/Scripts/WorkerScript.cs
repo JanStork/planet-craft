@@ -167,5 +167,9 @@ public class Worker : MonoBehaviour
         {
             Debug.Log("Worker se dotkl objektu: " + other.tag);
         }
+        if (other.CompareTag("Mineral"))
+        {
+            Player.Minerals += 5;
+        }
     }
 }
