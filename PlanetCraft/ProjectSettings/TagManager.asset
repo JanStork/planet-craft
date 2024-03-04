@@ -12,6 +12,8 @@ TagManager:
   - Worker
   - WorkerButton
   - MarineButton
+  - InhibitorButton
+  - BarracksButton
   layers:
   - Default
   - TransparentFX

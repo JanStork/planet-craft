@@ -74,6 +74,11 @@ public class Player : MonoBehaviour
     public GameObject marineIcon;
     public Text mineralsText;
     public static int Minerals;
+    public GameObject inhibitorPrefab;
+    public GameObject currentInhibitorIcon;
+    public GameObject inhibitorIconPrefab;
+    //private GameObject test;
+    private bool mouseButtonProcessed = false;
     private void Start()
     {
         Minerals = 0;
@@ -126,6 +131,17 @@ public class Player : MonoBehaviour
                         Debug.Log("Není dostatek minerálù");
                     }
                 }
+                else if (hit.collider.CompareTag("InhibitorButton"))
+                {
+                    if (currentInhibitorIcon == null)
+                    {
+                        currentInhibitorIcon = InstantiateInhibitorIconAtCursor();
+                    }
+                }
+                else if (hit.collider.CompareTag("BarracksButton"))
+                {
+
+                }
                 else
                 {
                     DoSomethingElse();
@@ -137,10 +153,55 @@ public class Player : MonoBehaviour
             }
         }
         mineralsText.text = "Minerals: " + Minerals;
+        MoveInhibitorIconWithCursor();
+    }
+    public void OnInhibitorButtonClicked()
+    {
+        currentInhibitorIcon = Instantiate(inhibitorPrefab, Input.mousePosition, Quaternion.identity);
+    }
+    private GameObject InstantiateInhibitorIconAtCursor()
+    {
+        Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        cursorPosition.z = 0f;
+        GameObject inhibitorIcon = Instantiate(inhibitorIconPrefab, cursorPosition, Quaternion.identity);
+        return inhibitorIcon;
+    }
+    private void InstantiateInhibitorAtCursor()
+    {
+        Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        cursorPosition.z = 0f;
+        Instantiate(inhibitorPrefab, cursorPosition, Quaternion.identity);
+        Destroy(currentInhibitorIcon);
     }
     void DoSomethingElse()
     {
         workerIcon.SetActive(false);
         marineIcon.SetActive(false);
     }
+    void MoveInhibitorIconWithCursor()
+    {
+        if (currentInhibitorIcon != null)
+        {
+            Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            cursorPosition.z = 0f;
+            currentInhibitorIcon.transform.position = cursorPosition;
+        }
+    }
 }
+
+
+/*                        if (Input.GetKeyDown(KeyCode.E))
+                        {
+                            Debug.Log("OK");
+                            InstantiateInhibitorAtCursor();
+                        }
+                        else if (Input.GetMouseButtonDown(1))
+                        {
+                            Destroy(currentInhibitorIcon);
+                        }
+                        else
+                        {
+                            Debug.Log("KO");
+                            currentInhibitorIcon = InstantiateInhibitorIconAtCursor();
+                        }
+*/
