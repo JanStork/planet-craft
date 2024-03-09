@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5428998598148389655}
   - component: {fileID: 4283982926332739307}
   - component: {fileID: 6173480698102231197}
+  - component: {fileID: 3152086631679263693}
   m_Layer: 0
   m_Name: InhibitorPicture
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 767347569883895732}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.931511, y: 6.114668, z: 0}
+  m_LocalPosition: {x: -3.0694318, y: 7.5537467, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5399c098f984e904ea0f11403971ebf8, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.3529412}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -120,3 +121,16 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -0.08}
   m_Size: {x: 5.35, y: 6.8}
   m_Direction: 0
+--- !u!114 &3152086631679263693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767347569883895732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e374fae8737c64dbc2cd7ebe35304b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inhibitorPrefab: {fileID: 5410804267380458681, guid: 9f940549f1d07f04a98350b872a6dd6e, type: 3}

@@ -74,11 +74,10 @@ public class Player : MonoBehaviour
     public GameObject marineIcon;
     public Text mineralsText;
     public static int Minerals;
-    public GameObject inhibitorPrefab;
-    public GameObject currentInhibitorIcon;
-    public GameObject inhibitorIconPrefab;
-    //private GameObject test;
-    private bool mouseButtonProcessed = false;
+    public GameObject inhibitorIcon;
+    public static bool inhibitorActive = false;
+    public GameObject barracksIcon;
+    public static bool barracksActive = false;
     private void Start()
     {
         Minerals = 0;
@@ -133,14 +132,11 @@ public class Player : MonoBehaviour
                 }
                 else if (hit.collider.CompareTag("InhibitorButton"))
                 {
-                    if (currentInhibitorIcon == null)
-                    {
-                        currentInhibitorIcon = InstantiateInhibitorIconAtCursor();
-                    }
+                    inhibitorActive = true;
                 }
                 else if (hit.collider.CompareTag("BarracksButton"))
                 {
-
+                    barracksActive = true;
                 }
                 else
                 {
@@ -153,26 +149,41 @@ public class Player : MonoBehaviour
             }
         }
         mineralsText.text = "Minerals: " + Minerals;
-        MoveInhibitorIconWithCursor();
+        if (inhibitorActive)
+        {
+            MoveInhibitorIconWithCursor();
+        }
+        else
+        {
+            inhibitorIcon.transform.position = new Vector3(-50f, 25f, 0f);
+        }
+        if (barracksActive)
+        {
+            MoveBarracksIconWithCursor();
+        }
+        else
+        {
+            barracksIcon.transform.position = new Vector3(-50f, 25f, 0f);
+        }
     }
-    public void OnInhibitorButtonClicked()
+    /*public void OnInhibitorButtonClicked()
     {
         currentInhibitorIcon = Instantiate(inhibitorPrefab, Input.mousePosition, Quaternion.identity);
-    }
-    private GameObject InstantiateInhibitorIconAtCursor()
+    }*/
+    /*private GameObject InstantiateInhibitorIconAtCursor()
     {
         Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         cursorPosition.z = 0f;
         GameObject inhibitorIcon = Instantiate(inhibitorIconPrefab, cursorPosition, Quaternion.identity);
         return inhibitorIcon;
-    }
-    private void InstantiateInhibitorAtCursor()
+    }*/
+    /*private void InstantiateInhibitorAtCursor()
     {
         Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         cursorPosition.z = 0f;
         Instantiate(inhibitorPrefab, cursorPosition, Quaternion.identity);
         Destroy(currentInhibitorIcon);
-    }
+    }*/
     void DoSomethingElse()
     {
         workerIcon.SetActive(false);
@@ -180,16 +191,23 @@ public class Player : MonoBehaviour
     }
     void MoveInhibitorIconWithCursor()
     {
-        if (currentInhibitorIcon != null)
+        if (inhibitorIcon != null)
         {
             Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             cursorPosition.z = 0f;
-            currentInhibitorIcon.transform.position = cursorPosition;
+            inhibitorIcon.transform.position = cursorPosition;
+        }
+    }
+    void MoveBarracksIconWithCursor()
+    {
+        if (barracksIcon != null)
+        {
+            Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            cursorPosition.z = 0f;
+            barracksIcon.transform.position = cursorPosition;
         }
     }
 }
-
-
 /*                        if (Input.GetKeyDown(KeyCode.E))
                         {
                             Debug.Log("OK");
