@@ -12,6 +12,7 @@ public class InhibitorSpawn : MonoBehaviour
             InstantiateInhibitorAtCursor();
             Debug.Log("Inhibitor spawned");
             Player.inhibitorActive = false;
+            Player.Minerals -= 500;
         }
         if (Player.inhibitorActive && Input.GetMouseButtonDown(1))
         {

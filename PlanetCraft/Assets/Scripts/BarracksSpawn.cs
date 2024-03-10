@@ -12,6 +12,7 @@ public class BarracksSpawn : MonoBehaviour
             InstantiateBarracksAtCursor();
             Debug.Log("Barracks spawned");
             Player.barracksActive = false;
+            Player.Minerals -= 250;
         }
         if (Player.barracksActive && Input.GetMouseButtonDown(1))
         {

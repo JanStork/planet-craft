@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
     public static bool barracksActive = false;
     private void Start()
     {
-        Minerals = 0;
+        Minerals = 1000;
         workerIcon.SetActive(false);
         marineIcon.SetActive(false);
     }
@@ -99,10 +99,10 @@ public class Player : MonoBehaviour
                 }
                 else if (hit.collider.CompareTag("WorkerButton"))
                 {
-                    if (Minerals > 25)
+                    if (Minerals >= 25)
                     {
                         Minerals -= 25;
-                        Vector3 newPosition = new Vector3(-19f, -7f, 0f);
+                        Vector3 newPosition = new Vector3(-22f, -10f, 0f);
                         GameObject newWorker = Instantiate(workerPrefab, newPosition, Quaternion.identity);
                         newWorker.transform.parent = player1.transform;
                     }
@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
                 }
                 else if (hit.collider.CompareTag("MarineButton"))
                 {
-                    if (Minerals > 75) 
+                    if (Minerals >= 75) 
                     {
                         Minerals -= 75;
                         Vector3 newPosition = new Vector3(-12.5f, -8f, 0f);
@@ -132,11 +132,25 @@ public class Player : MonoBehaviour
                 }
                 else if (hit.collider.CompareTag("InhibitorButton"))
                 {
-                    inhibitorActive = true;
+                    if (Minerals >= 500)
+                    {
+                        inhibitorActive = true;
+                    }
+                    else
+                    {
+                        Debug.Log("Nedostatek mineralu");
+                    }
                 }
                 else if (hit.collider.CompareTag("BarracksButton"))
                 {
-                    barracksActive = true;
+                    if (Minerals >= 250)
+                    {
+                        barracksActive = true;
+                    }
+                    else
+                    {
+                        Debug.Log("Nedostatek mineralu");
+                    }
                 }
                 else
                 {
