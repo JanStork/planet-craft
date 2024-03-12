@@ -161,13 +161,21 @@ public class Worker : MonoBehaviour
             reachedTarget = false;
         }
     }
-    void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.CompareTag("Mineral") || other.CompareTag("Inhibitor"))
+        /*if (other.CompareTag("Mineral") || other.CompareTag("Inhibitor"))
         {
             Debug.Log("Worker se dotkl objektu: " + other.tag);
         }
         if (other.CompareTag("Mineral"))
+        {
+            Player.Minerals += 5;
+        }*/
+        if (other.gameObject.CompareTag("Mineral") || other.gameObject.CompareTag("Inhibitor"))
+        {
+            Debug.Log("Worker se dotkl objektu: " + other.gameObject.tag);
+        }
+        if (other.gameObject.CompareTag("Mineral"))
         {
             Player.Minerals += 5;
         }

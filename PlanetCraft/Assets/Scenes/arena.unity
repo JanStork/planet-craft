@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 61332458}
   - component: {fileID: 61332460}
   - component: {fileID: 61332459}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mineral (15)
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 107933242}
   - component: {fileID: 107933244}
   - component: {fileID: 107933243}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mineral (6)
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -353,7 +353,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -447,7 +447,7 @@ GameObject:
   - component: {fileID: 390527648}
   - component: {fileID: 390527650}
   - component: {fileID: 390527649}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mineral (19)
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -854,7 +854,7 @@ GameObject:
   - component: {fileID: 479084065}
   - component: {fileID: 479084064}
   - component: {fileID: 479084066}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mineral
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -957,7 +957,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -984,7 +984,7 @@ GameObject:
   - component: {fileID: 553601452}
   - component: {fileID: 553601454}
   - component: {fileID: 553601453}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mineral (7)
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -1035,7 +1035,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1114,7 +1114,7 @@ GameObject:
   - component: {fileID: 561276886}
   - component: {fileID: 561276888}
   - component: {fileID: 561276887}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mineral (3)
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -1165,7 +1165,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1543,7 +1543,7 @@ GameObject:
   - component: {fileID: 588603159}
   - component: {fileID: 588603161}
   - component: {fileID: 588603160}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mineral (16)
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -1730,7 +1730,7 @@ GameObject:
   - component: {fileID: 643505701}
   - component: {fileID: 643505703}
   - component: {fileID: 643505702}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mineral (14)
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -2277,7 +2277,7 @@ GameObject:
   - component: {fileID: 1020480650}
   - component: {fileID: 1020480652}
   - component: {fileID: 1020480651}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mineral (10)
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -2328,7 +2328,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -2485,7 +2485,7 @@ GameObject:
   - component: {fileID: 1115484903}
   - component: {fileID: 1115484905}
   - component: {fileID: 1115484904}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mineral (12)
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -2704,9 +2704,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1972259395}
     m_Modifications:
+    - target: {fileID: 1878894534480361448, guid: 9f940549f1d07f04a98350b872a6dd6e, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1878894534480361448, guid: 9f940549f1d07f04a98350b872a6dd6e, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5410804267380458681, guid: 9f940549f1d07f04a98350b872a6dd6e, type: 3}
       propertyPath: m_Name
       value: Inhibitor
+      objectReference: {fileID: 0}
+    - target: {fileID: 5410804267380458681, guid: 9f940549f1d07f04a98350b872a6dd6e, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475924309057271900, guid: 9f940549f1d07f04a98350b872a6dd6e, type: 3}
+      propertyPath: m_Size.x
+      value: 5.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475924309057271900, guid: 9f940549f1d07f04a98350b872a6dd6e, type: 3}
+      propertyPath: m_Size.y
+      value: 6.72
+      objectReference: {fileID: 0}
+    - target: {fileID: 6597473331191777709, guid: 9f940549f1d07f04a98350b872a6dd6e, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6783979750789079521, guid: 9f940549f1d07f04a98350b872a6dd6e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2764,7 +2788,7 @@ GameObject:
   - component: {fileID: 1268316525}
   - component: {fileID: 1268316527}
   - component: {fileID: 1268316526}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mineral (13)
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -2955,7 +2979,7 @@ GameObject:
   - component: {fileID: 1307079300}
   - component: {fileID: 1307079302}
   - component: {fileID: 1307079301}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mineral (8)
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -3006,7 +3030,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -3085,7 +3109,7 @@ GameObject:
   - component: {fileID: 1352293093}
   - component: {fileID: 1352293095}
   - component: {fileID: 1352293094}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mineral (2)
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -3136,7 +3160,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -3215,7 +3239,7 @@ GameObject:
   - component: {fileID: 1359236835}
   - component: {fileID: 1359236837}
   - component: {fileID: 1359236836}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mineral (9)
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -3266,7 +3290,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -3345,7 +3369,7 @@ GameObject:
   - component: {fileID: 1408083757}
   - component: {fileID: 1408083759}
   - component: {fileID: 1408083758}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mineral (1)
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -3396,7 +3420,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -3475,7 +3499,7 @@ GameObject:
   - component: {fileID: 1566223698}
   - component: {fileID: 1566223700}
   - component: {fileID: 1566223699}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mineral (21)
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -3735,7 +3759,7 @@ GameObject:
   - component: {fileID: 1685595190}
   - component: {fileID: 1685595192}
   - component: {fileID: 1685595191}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mineral (18)
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -3949,7 +3973,7 @@ GameObject:
   - component: {fileID: 1816149455}
   - component: {fileID: 1816149457}
   - component: {fileID: 1816149456}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mineral (17)
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -4117,7 +4141,7 @@ GameObject:
   - component: {fileID: 1903680934}
   - component: {fileID: 1903680936}
   - component: {fileID: 1903680935}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mineral (20)
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -4371,8 +4395,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 95221829}
   - {fileID: 1872417581}
+  - {fileID: 95221829}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1978585928
@@ -4386,7 +4410,7 @@ GameObject:
   - component: {fileID: 1978585929}
   - component: {fileID: 1978585931}
   - component: {fileID: 1978585930}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mineral (5)
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -4437,7 +4461,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -4516,7 +4540,7 @@ GameObject:
   - component: {fileID: 2073873181}
   - component: {fileID: 2073873183}
   - component: {fileID: 2073873182}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mineral (4)
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -4567,7 +4591,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -4646,7 +4670,7 @@ GameObject:
   - component: {fileID: 2142835156}
   - component: {fileID: 2142835158}
   - component: {fileID: 2142835157}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Mineral (11)
   m_TagString: Mineral
   m_Icon: {fileID: 0}
@@ -4824,6 +4848,10 @@ PrefabInstance:
     - target: {fileID: 2361297647094249837, guid: a26f15a0a16d9dd44a891c906ed7e3c0, type: 3}
       propertyPath: m_Name
       value: barracks
+      objectReference: {fileID: 0}
+    - target: {fileID: 2361297647094249837, guid: a26f15a0a16d9dd44a891c906ed7e3c0, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3907484290408440400, guid: a26f15a0a16d9dd44a891c906ed7e3c0, type: 3}
       propertyPath: m_Size.x
