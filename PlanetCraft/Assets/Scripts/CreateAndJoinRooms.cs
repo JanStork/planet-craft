@@ -9,6 +9,7 @@ public class CreateAndJoinRooms : MonoBehaviourPunCallbacks
     [SerializeField] GameObject createInput;
     [SerializeField] GameObject joinInput;
 
+    
     public void CreateRoom()
     {
         PhotonNetwork.CreateRoom(createInput.ToString());

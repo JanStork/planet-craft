@@ -80,18 +80,18 @@ public class Player : MonoBehaviour
     public GameObject barracksIcon;
     public static bool barracksActive = false;
 
-    PhotonView view;
+    //PhotonView view;
     private void Start()
     {
         Minerals = 1000;
         workerIcon.SetActive(false);
         marineIcon.SetActive(false);
-        view = GetComponent<PhotonView>();
+        //view = GetComponent<PhotonView>();
     }
     void Update()
     {
-        if (view.IsMine)
-        {
+        //if (view.IsMine)
+        //{
             if (Input.GetMouseButtonDown(0))
             {
                 Vector2 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -168,7 +168,7 @@ public class Player : MonoBehaviour
                     DoSomethingElse();
                 }
             }
-        }
+        //}
         
         mineralsText.text = "Minerals: " + Minerals;
         if (inhibitorActive)
