@@ -188,24 +188,6 @@ public class Player : MonoBehaviour
             barracksIcon.transform.position = new Vector3(-50f, 25f, 0f);
         }
     }
-    /*public void OnInhibitorButtonClicked()
-    {
-        currentInhibitorIcon = Instantiate(inhibitorPrefab, Input.mousePosition, Quaternion.identity);
-    }*/
-    /*private GameObject InstantiateInhibitorIconAtCursor()
-    {
-        Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        cursorPosition.z = 0f;
-        GameObject inhibitorIcon = Instantiate(inhibitorIconPrefab, cursorPosition, Quaternion.identity);
-        return inhibitorIcon;
-    }*/
-    /*private void InstantiateInhibitorAtCursor()
-    {
-        Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        cursorPosition.z = 0f;
-        Instantiate(inhibitorPrefab, cursorPosition, Quaternion.identity);
-        Destroy(currentInhibitorIcon);
-    }*/
     void DoSomethingElse()
     {
         workerIcon.SetActive(false);
@@ -230,18 +212,3 @@ public class Player : MonoBehaviour
         }
     }
 }
-/*                        if (Input.GetKeyDown(KeyCode.E))
-                        {
-                            Debug.Log("OK");
-                            InstantiateInhibitorAtCursor();
-                        }
-                        else if (Input.GetMouseButtonDown(1))
-                        {
-                            Destroy(currentInhibitorIcon);
-                        }
-                        else
-                        {
-                            Debug.Log("KO");
-                            currentInhibitorIcon = InstantiateInhibitorIconAtCursor();
-                        }
-*/

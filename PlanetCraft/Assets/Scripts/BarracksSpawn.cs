@@ -5,7 +5,7 @@ using UnityEngine;
 public class BarracksSpawn : MonoBehaviour
 {
     public GameObject barracksPrefab;
-    private double HP = 1000;
+    public GameObject player1;
     void Update()
     {
         if (Player.barracksActive && Input.GetMouseButtonDown(0))
@@ -19,15 +19,12 @@ public class BarracksSpawn : MonoBehaviour
         {
             Player.barracksActive = false;
         }
-        if (HP <= 0)
-        {
-            Destroy(gameObject, 0f);
-        }
     }
     private void InstantiateBarracksAtCursor()
     {
         Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         cursorPosition.z = 0f;
-        Instantiate(barracksPrefab, cursorPosition, Quaternion.identity);
+        /*GameObject barracksInstance = */Instantiate(barracksPrefab, cursorPosition, Quaternion.identity);
+        //barracksInstance.transform.parent = player1.transform;
     }
 }

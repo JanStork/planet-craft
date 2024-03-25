@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5145150471483662328}
   m_Layer: 9
   m_Name: Marine
-  m_TagString: Untagged
+  m_TagString: Marine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,4 +143,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 715ecb5bf05fac34ba2ceffe6ee254a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  moveSpeed: 5
