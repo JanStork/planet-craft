@@ -5,6 +5,7 @@ using UnityEngine;
 public class InhibitorSpawn : MonoBehaviour
 {
     public GameObject inhibitorPrefab;
+    public GameObject player1;
     void Update()
     {
         if (Player.inhibitorActive && Input.GetMouseButtonDown(0))

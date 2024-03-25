@@ -4,78 +4,56 @@ using UnityEngine;
 
 public class MarineScript : MonoBehaviour
 {
-    public float speed = 5f;
-    private Transform currentTarget;
-    private bool reachedTarget;
-    void Start()
+    public float moveSpeed = 5f; // Rychlost pohybu jednotky
+
+    private GameObject ownTeam; // Reference na tým, ke kterému tato jednotka patøí
+    private GameObject enemyTeam; // Reference na nepøátelský tým
+
+    private void Start()
     {
-        currentTarget = null;
-        reachedTarget = false;
+        // Pøi spuštìní hry získáváme referenci na tým, ke kterému tato jednotka patøí,
+        // a nepøátelský tým na základì názvu tohoto týmu
+        ownTeam = transform.parent.gameObject;
+        enemyTeam = (ownTeam.name == "player1") ? GameObject.Find("player2") : GameObject.Find("player1");
+
+        // Zahajujeme pohyb k nejbližšímu nepøátelskému objektu
+        MoveToNearestEnemy();
     }
-    void Update()
+
+    private void MoveToNearestEnemy()
     {
-        if (reachedTarget || currentTarget == null)
+        // Získání všech colliderù v okruhu 10 jednotek od pozice této jednotky
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, 10f);
+
+        // Inicializace promìnných pro uchování nejbližšího nepøátelského objektu a vzdálenosti k nìmu
+        float closestDistance = Mathf.Infinity;
+        GameObject closestEnemy = null;
+
+        // Procházení všech colliderù v okruhu
+        foreach (Collider2D col in hitColliders)
         {
-            FindNearestTarget();
-        }
-        else
-        {
-            MoveTowardsTarget();
-        }
-    }
-    void MoveTowardsTarget()
-    {
-        if (currentTarget != null)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, currentTarget.position, Time.deltaTime * speed);
-            if (Vector2.Distance(transform.position, currentTarget.position) < 0.1f)
+            // Kontrola, zda nalezený collider patøí nepøátelskému týmu
+            if (col.gameObject.transform.parent == enemyTeam.transform)
             {
-                reachedTarget = true;
+                // Vypoètení vzdálenosti mezi touto jednotkou a nalezeným nepøátelským objektem
+                float distance = Vector2.Distance(transform.position, col.gameObject.transform.position);
+
+                // Aktualizace nejbližšího nepøátelského objektu, pokud je vzdálenost menší než dosavadní nejbližší objekt
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestEnemy = col.gameObject;
+                }
             }
         }
-    }
-    void FindNearestTarget()
-    {
-        GameObject[] minerals = GameObject.FindGameObjectsWithTag("Mineral");
-        GameObject[] inhibitors = GameObject.FindGameObjectsWithTag("Inhibitor");
-        float nearestMineralDistance = Mathf.Infinity;
-        float nearestInhibitorDistance = Mathf.Infinity;
-        Transform nearestMineral = null;
-        Transform nearestInhibitor = null;
-        foreach (GameObject mineral in minerals)
+
+        // Pokud byl nalezen nejbližší nepøátelský objekt
+        if (closestEnemy != null)
         {
-            float distance = Vector2.Distance(transform.position, mineral.transform.position);
-            if (distance < nearestMineralDistance)
-            {
-                nearestMineralDistance = distance;
-                nearestMineral = mineral.transform;
-            }
-        }
-        foreach (GameObject inhibitor in inhibitors)
-        {
-            float distance = Vector2.Distance(transform.position, inhibitor.transform.position);
-            if (distance < nearestInhibitorDistance)
-            {
-                nearestInhibitorDistance = distance;
-                nearestInhibitor = inhibitor.transform;
-            }
-        }
-        if (nearestInhibitor != null)
-        {
-            currentTarget = nearestInhibitor;
-            reachedTarget = false;
-        }
-        else if (nearestMineral != null)
-        {
-            currentTarget = nearestMineral;
-            reachedTarget = false;
-        }
-    }
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Mineral") || other.CompareTag("Inhibitor"))
-        {
-            Debug.Log("Worker se dotkl objektu: " + other.tag);
+            // Urèení smìru k nejbližšímu nepøátelskému objektu a pohyb v tomto smìru s danou rychlostí
+            Vector3 direction = closestEnemy.transform.position - transform.position;
+            direction.Normalize();
+            transform.Translate(direction * moveSpeed * Time.deltaTime);
         }
     }
 }

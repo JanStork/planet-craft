@@ -5,6 +5,7 @@ using UnityEngine;
 public class BarracksSpawn : MonoBehaviour
 {
     public GameObject barracksPrefab;
+    private double HP = 1000;
     void Update()
     {
         if (Player.barracksActive && Input.GetMouseButtonDown(0))
@@ -17,6 +18,10 @@ public class BarracksSpawn : MonoBehaviour
         if (Player.barracksActive && Input.GetMouseButtonDown(1))
         {
             Player.barracksActive = false;
+        }
+        if (HP <= 0)
+        {
+            Destroy(gameObject, 0f);
         }
     }
     private void InstantiateBarracksAtCursor()
