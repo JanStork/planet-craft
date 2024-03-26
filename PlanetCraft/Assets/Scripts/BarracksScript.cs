@@ -5,7 +5,7 @@ using UnityEngine;
 public class BarracksScript : MonoBehaviour
 {
     public float HP = 1000;
-    public float detectionRadius = 5f;
+    public float detectionRadius = 0.001f;
     private void Update()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius);

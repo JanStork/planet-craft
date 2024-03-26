@@ -12,19 +12,13 @@ public class MarineScript : MonoBehaviour
     private double HP = 350;
     private void Start()
     {
-        ownTeam = transform.parent.gameObject;
-        enemyParent = (ownTeam.CompareTag("player1")) ? GameObject.Find("player2") : GameObject.Find("player1");
-        if (enemyParent == null)
-        {
-            Debug.LogError("Nepodaøilo se najít nepøátelského rodièe.");
-            return;
-        }
-        enemies = GetChildObjects(enemyParent);
+        Help();
     }
     private void Update()
     {
+        Help();
         MoveToNearestEnemy();
-        if (Vector2.Distance(transform.position, closestEnemy.transform.position) < 1f)
+        if (Vector2.Distance(transform.position, closestEnemy.transform.position) < 0.001f)
         {
             if (closestEnemy.CompareTag("Inhibitor") || closestEnemy.CompareTag("Barracks"))
             {
@@ -46,6 +40,17 @@ public class MarineScript : MonoBehaviour
         {
             Destroy(gameObject, 0f);
         }
+    }
+    private void Help()
+    {
+        ownTeam = transform.parent.gameObject;
+        enemyParent = (ownTeam.CompareTag("player1")) ? GameObject.Find("player2") : GameObject.Find("player1");
+        if (enemyParent == null)
+        {
+            Debug.LogError("Nepodaøilo se najít nepøátelského rodièe.");
+            return;
+        }
+        enemies = GetChildObjects(enemyParent);
     }
     private void MoveToNearestEnemy()
     {

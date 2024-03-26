@@ -5,7 +5,7 @@ using UnityEngine;
 public class InhibitorScript : MonoBehaviour
 {
     public float HP = 1500;
-    public float detectionRadius = 5f;
+    public float detectionRadius = 0.001f;
     private void Update()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius);
