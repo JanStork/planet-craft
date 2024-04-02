@@ -90,8 +90,8 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
-        //if (view.IsMine)
-        //{
+        if (true)  //view.IsMine
+        {
             if (Input.GetMouseButtonDown(0))
             {
                 Vector2 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -168,8 +168,7 @@ public class Player : MonoBehaviour
                     DoSomethingElse();
                 }
             }
-        //}
-        
+        }
         mineralsText.text = "Minerals: " + Minerals;
         if (inhibitorActive)
         {

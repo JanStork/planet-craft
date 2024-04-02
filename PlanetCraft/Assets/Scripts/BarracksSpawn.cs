@@ -24,7 +24,18 @@ public class BarracksSpawn : MonoBehaviour
     {
         Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         cursorPosition.z = 0f;
-        /*GameObject barracksInstance = */Instantiate(barracksPrefab, cursorPosition, Quaternion.identity);
-        //barracksInstance.transform.parent = player1.transform;
+        GameObject inhibitorInstance = Instantiate(barracksPrefab, cursorPosition, Quaternion.identity);
+        inhibitorInstance.transform.parent = GameObject.Find("player1"/*parent.tag*/).transform;
     }
+    /*private void PlayerTeam()
+    {
+        if (GetComponent<PhotonView>().IsMine)
+        {
+            playerCamera = Camera.main.gameObject;
+            if (playerCamera != null)
+            {
+                parent = playerCamera.transform.parent;
+            }
+        }
+    }*/
 }

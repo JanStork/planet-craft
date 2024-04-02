@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MarineScript : MonoBehaviour
@@ -10,6 +11,7 @@ public class MarineScript : MonoBehaviour
     private GameObject[] enemies;
     GameObject closestEnemy = null;
     private double HP = 350;
+    public float detectionRadius = 0.001f;
     private void Start()
     {
         Help();
@@ -18,24 +20,7 @@ public class MarineScript : MonoBehaviour
     {
         Help();
         MoveToNearestEnemy();
-        if (Vector2.Distance(transform.position, closestEnemy.transform.position) < 0.001f)
-        {
-            if (closestEnemy.CompareTag("Inhibitor") || closestEnemy.CompareTag("Barracks"))
-            {
-                HP -= 1;
-                Debug.Log("-HP - Inhibitor or barracks");
-            }
-            else if (closestEnemy.CompareTag("Worker"))
-            {
-                HP -= 2.5;
-                Debug.Log("-HP - Worker");
-            }
-            else if (closestEnemy.CompareTag("Marine"))
-            {
-                HP -= 5;
-                Debug.Log("-HP - Marine");
-            }
-        }
+        Damage();
         if (HP <= 0)
         {
             Destroy(gameObject, 0f);
@@ -86,8 +71,37 @@ public class MarineScript : MonoBehaviour
         }
         return childObjects.ToArray();
     }
+    private void Damage()
+    {
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, detectionRadius);
+        if (colliders != null && colliders.Length > 0)
+        {
+            foreach (Collider2D collider in colliders)
+            {
+                if (collider.CompareTag("Marine") && collider.transform.parent != null && collider.transform.parent.CompareTag(enemyParent.tag))
+                {
+                    HP -= 0.1f;
+                    Debug.Log("Merine HP: " + HP);
+                }
+                if (collider.CompareTag("Worker") && collider.transform.parent != null && collider.transform.parent.CompareTag(enemyParent.tag))
+                {
+                    HP -= 0.01f;
+                    Debug.Log("Marine HP: " + HP);
+                }
+                if (collider.CompareTag("Inhibitor") && collider.transform.parent != null && collider.transform.parent.CompareTag(enemyParent.tag))
+                {
+                    HP -= 0.03f;
+                    Debug.Log("Marine HP: " + HP);
+                }
+                if (collider.CompareTag("Barracks") && collider.transform.parent != null && collider.transform.parent.CompareTag(enemyParent.tag))
+                {
+                    HP -= 0.03f;
+                    Debug.Log("Marine HP: " + HP);
+                }
+            }
+        }
+    }
 }
-
 /*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
