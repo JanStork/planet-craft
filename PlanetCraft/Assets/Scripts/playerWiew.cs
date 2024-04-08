@@ -92,7 +92,7 @@ public class Player : MonoBehaviour
     {
         if (true)  //view.IsMine
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonUp(0))
             {
                 Vector2 clickPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 RaycastHit2D hit = Physics2D.Raycast(clickPosition, Vector2.zero);
